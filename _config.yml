@@ -1,21 +1,21 @@
 # Site/SEO settings
-email: 
+email: yunjea0312@naver.com
 permalink: /:year/:month/:day/:title/
 google_analytics: 
 
-title: Trophy
+title: Yunjae's Dev_Blog
 description: 
-url: ""
+url: "https://leeyunjea.github.io"
 baseurl: ""
 twitter_username: 
-default_img: 
+default_img: "/_images/yunjae_in_paris.jpeg"
 
 # Profile settings
-name: 
+name: yunjae
 profile_img: 
 profile: 
 social:
-  github: 
+github: "https://github.com/leeyunjea"
 
 # Build settings
 markdown: kramdown
