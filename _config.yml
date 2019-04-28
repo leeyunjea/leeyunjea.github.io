@@ -3,12 +3,12 @@ email: yunjea0312@naver.com
 permalink: /:year/:month/:day/:title/
 google_analytics: 
 
-title: Yunjae's Dev_Blog
+title: Yunjae's Blog
 description: 
 url: "https://leeyunjea.github.io"
 baseurl: ""
 twitter_username: 
-default_img: "/_images/yunjae_in_paris.jpeg"
+default_img: "../../../_images/strawberry.jpg"
 
 # Profile settings
 name: yunjae
