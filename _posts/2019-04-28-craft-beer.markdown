@@ -5,7 +5,7 @@ date: 2019-04-28
 categories:
   - 비밀번호암호화
 description:
-image: https://picsum.photos/2000/1200?image=1003
+image: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428065000_STANDARD.jpg?raw=true
 # image: _posts/_image/paris.jpeg
 image-sm: https://picsum.photos/500/300?image=1003
 
