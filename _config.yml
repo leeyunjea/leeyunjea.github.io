@@ -8,7 +8,7 @@ description:
 url: "https://leeyunjea.github.io"
 baseurl: ""
 twitter_username: 
-default_img: "../../../_images/strawberry.jpg"
+default_img: "https://picsum.photos/2000/1200?image=1003" 
 
 # Profile settings
 name: yunjae
@@ -29,6 +29,7 @@ compress_html:
   startings: [html, head, body]
 exclude:
   - _screenshots
+  - _images
   - .DS_Store
   - Gemfile
   - Gemfile.lock
