@@ -6,15 +6,15 @@ google_analytics:
 title: Yunjae's Blog
 description: 
 url: "https://leeyunjea.github.io"
-baseurl: ""
+baseurl: 
 twitter_username: 
 default_img: "https://picsum.photos/2000/1200?image=1003" 
 
 # Profile settings
 name: yunjae
-profile_img: 
-profile: 
-social:
+profile_img: "https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/paris.jpeg?raw=true"
+profile: Welcome to Yunjae's blog. This blog is described for IT study purpose.
+social: yunjea0312@naver.com
 github: "https://github.com/leeyunjea"
 
 # Build settings
