@@ -8,11 +8,11 @@ description:
 url: "https://leeyunjea.github.io"
 baseurl: 
 twitter_username: 
-default_img: "https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428065625_ROYAL.JPG?raw=true" 
+default_img: "/image/ALLOWTO_PHOTO_20190428065625_ROYAL.JPG" 
 
 # Profile settings
 name: yunjae
-profile_img: "https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/me.jpeg?raw=true"
+profile_img: "/image/me.jpeg"
 profile: Welcome to Yunjae's blog. This blog is described for IT study purpose.
 social: yunjea0312@naver.com
 github: "https://github.com/leeyunjea"
@@ -29,7 +29,6 @@ compress_html:
   startings: [html, head, body]
 exclude:
   - _screenshots
-  - _images
   - .DS_Store
   - Gemfile
   - Gemfile.lock

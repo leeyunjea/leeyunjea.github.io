@@ -5,9 +5,9 @@ date: 2019-04-28
 categories:
   - 비밀번호암호화
 description:
-image: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428065000_STANDARD.jpg?raw=true
-# image: _posts/_image/paris.jpeg
-image-sm: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428065000_STANDARD.jpg?raw=true
+# image: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428065000_STANDARD.jpg?raw=true
+image: /image/ALLOWTO_PHOTO_20190428065000_STANDARD.jpg
+image-sm: /image/ALLOWTO_PHOTO_20190428065000_STANDARD.jpg
 
 ---
 <p>팀 프로젝트를 진행하던 중 비밀번호 암호화 하는 방법을 배우게 되었다. 비밀번호를 암호화 하기 위해 해싱함수를 이용하여 비밀번호를 해싱하고 해싱된 비밀번호에 salt를 한다. "salt-소금치기". 필자는 salt 암호화에 대한 좋은 블로그를 발견하여 그 블로그를 다시 정리하면서 공부하기로 하였다. </p>

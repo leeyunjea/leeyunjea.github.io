@@ -1,13 +1,47 @@
 /**
  * Body
  */
+
+
 body {
   background-color: $color-grey;
 }
 
 /**
- * Sections
+ * Post image size set
  */
+.post-img {
+  .small {
+    width: 20%;
+  }
+  .mid {
+    width: 40%;
+  }
+  .large {
+    width: 60%;
+  }
+  align: center;
+  text-align: center;
+}
+
+.post-img-small {
+  align: center;
+  text-align: center;
+  width: 20%;
+}
+
+.post-img-mid {
+  align: center;
+  text-align: center;
+  width: 40%;
+}
+
+.post-img-large {
+  align: center;
+  text-align: center;
+  width: 60%;
+}
+
 section {
   position: relative;
 }

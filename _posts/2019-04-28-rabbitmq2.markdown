@@ -5,11 +5,15 @@ date: 2019-04-28
 categories:
   - RabbitMQ
 description:
-image: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428071738_BASIC.jpg?raw=true
-# image: _posts/_image/paris.jpeg
-image-sm: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428071738_BASIC.jpg?raw=true
+# image: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428071738_BASIC.jpg?raw=true
+image: /image/ALLOWTO_PHOTO_20190428071738_BASIC.jpg
+image-sm: /image/ALLOWTO_PHOTO_20190428071738_BASIC.jpg
 
 ---
+<!-- {:.post-img.small}
+![producer](/image/rabbitmq/producer.png) -->
+
+
 <p>팀 프로젝트를 진행하던 중 대용량 메시지 처리를 위해 메시지 큐를 고민하던 중 RabbitMQ 라는 메시지 큐를 사용하기로 하였다. 사용해보고 RabbitMQ에 대하여 정리하는 글이다.</p><br>
 
 <h2>이해하기</h2>
@@ -30,15 +34,22 @@ image-sm: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/A
 <h3>주요용어</h3><br>
 <ul>
   <li>Producer : 메시지를 보내는 Application<br>
-  <!-- <img src="../_images/_rabbitmq/producer.png"/> -->
+  <img src="/image/rabbitmq/producer.png" class="post-img-small"/>
   </li>
   <li>Publish : Producer가 메시지를 보냄</li>
-  <li>Queue : 메시지를 저장하는 버퍼 , Queue는 Exchange에 Binding된다.</li>
-  <li>Consumer : 메시지 받는 User Application</li>
+  <li>Queue : 메시지를 저장하는 버퍼 , Queue는 Exchange에 Binding된다.</li><br>
+  <img src="/image/rabbitmq/queue_name.png" class="post-img-small"/>
+  <li>Consumer : 메시지 받는 User Application</li><br>
+  <img src="/image/rabbitmq/customer.png" class="post-img-small"/>
   <li>Subscribe : Consumer가 메세지를 수신하기 위해 Queue를 실시간으로 리스닝하도록 만듬.</li>
   <li>Publish/Subscribe 방식 지원</li>
   <li>Exchange : Producer가 전달한 메시지를 Queue에 전달하는 역할, 메시지가 Queue에 직접 전달되지 않고 exchange type 정의대로 동작</li>
-  <li>Bindings : Exchange와 Queue를 연결해주는 것</li>
+  <br>
+  <img src="/image/rabbitmq/exchange.png" class="post-img-mid"/>
+  <li>Exchange type : 동작 방식 선택</li><br>
+  <img src="/image/rabbitmq/exchange_type.png" class="post-img-large"/>
+  <li>Bindings : Exchange와 Queue를 연결해주는 것</li><br>
+  <img src="/image/rabbitmq/bindings.png" class="post-img-mid"/>
   <li>Routing : Exchange가 Queue에 메시지를 전달하는 과정</li>
   <li>RoutingKey : Exchange와 Queue가 Binding될 때 Exchange가 Queue에 메시지를 전달할지를 결정하는 기준<br>
   Publish RoutingKey가 Binding시 설정된 RoutingKey값과 일치하거나 (exchange type=direct 경우) RoutingKey값이 Binding시 설정된 패턴에 매칭될 때
@@ -49,6 +60,8 @@ image-sm: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/A
 
 <h3>기본 흐름</h3><br>
 <p>Exchange를 별도로 명시하지 않은 요청의 기본 흐름</p>
+<br>
+  <img src="/image/rabbitmq/default_flow.png" class="post-img-large"/>
 
 <ol>
   <li>Producer가 메시지를 생성하여 전송</li>
@@ -77,23 +90,25 @@ MQ의 존재 이유를 보여주는 매우 중요한 개념이다. 이로 인해
 <h3>Fair dispatch(공평한 분배)</h3><br>
 <p>여러 consumer에게 round robin할 때 번갈아가면서 메시지를 전달하지만 완전히 공평하진 않음(매홀수는 데이터크기가 크고, 매짝수는 데이터크기가 작은 등)
 때문에 busy한 서버에게 메시지를 계속 전달하지 않도록 prefetchCount라는 개념사용.prefetchCount가 1일때는 아직 ack를 받지 못한 메시지가 1개라도 있으면 다시 그 consumer에게 메시지 할당하지 않음.즉 prefetchCount는 동시에 보내는 메시지 양임
-</p>
+</p><br>
+  <img src="/image/rabbitmq/fair_dispatch.png" class="post-img-large"/>
 <br>
 
 <h3>메시지 수신 통보 (Acknowledgment)</h3><br>
 <p>많은 프로토콜들이 메시지 전달 보장을 위해 Acknowlegment(ACK)라는 개념을 사용하여 메시지에 대한 응답을 보내주도록 되어있다.MQTT의 경우는 QoS(Quality of Service) level이라고해서 0=안보냄, 1=전달완료확인, 2=최종목적지까지 처리완료 확인의 개념이 있는데RabbitMQ의 경우는 Acknowledgment(Consumer전달확인)와 Confirm(Publish전달확인)을 이용한 level 1만 지원하는 듯 하다.(추정)
 ACK가 중요한 이유는 Queue는 Consumer에게 데이터를 전달하고나면 Queue에서 메시지를 삭제하므로, Consumer가 전달받았지만 처리도중 오류가 발생하여 재처리해야하는 경우를 위해 보관 유예기간을 두는 용도로 이용된다. 즉 ACK가 온 메시지만 삭제처리하도록 하는 것이다.<br>
 ※ 주의 basicQos라는 설정은 prefetchCount의 숫자 설정임(!! QoS level 0,1,2의 개념 아님!!)
-</p>
+</p><br>
+  <img src="/image/rabbitmq/acknowledge.png" class="post-img-large"/>
 <br>
 
 <h3>여러 Client(Consumer) 중 일부가 죽었을시 대응방법</h3><br>
 <p>앞서 설명했듯이 Consumer가 ACK를 보내지 않으면 Queue에 쌓인 메시지는 지워지지 않고 남아있다.메시지를 받은 Consumer가 느려서 아직 Processing 중일 수 있어서 다른 Consumer에게 Round Robin하여 재전송 하자니 중복처리 우려가 있고,그대로 Unacknowledged 상태로 마냥 처리 안된채로 남겨 둘 수도 없고 곤란하다.
 이 경우에 어떻게 동작하는지 확인해볼 필요가 있다.<br><br>
 
-같은 메시지에 대하여 바인딩되어있는 Consumer가 2개가 있다. 하나는 ACK를 재대로 보내는 Consumer고 하나는 오류 상황이 발생하여 ACK를 보내지 못하는 상황이다. prefetchCount는 1로 하나라도 Unacknowledge 상태라면 재전송을 하지 않도록 설정한다.
+같은 메시지에 대하여 바인딩되어있는 Consumer가 2개가 있다. 하나는 ACK를 재대로 보내는 Consumer고 하나는 오류 상황이 발생하여 ACK를 보내지 못하는 상황이다. prefetchCount는 1로 하나라도 Unacknowledge 상태라면 재전송을 하지 않도록 설정한다.<br>
+  <img src="/image/rabbitmq/many_client_die.png" class="post-img-large"/>
 
-<!-- 이미지 넣기 -->
 
 <br><br>
 위에서 보는 것 처럼 Acknowledge 메시지가 돌아오지 않으면 Queue는 메시지를 삭제하지 않고 보관하고 있다가, Consumer가 이를 처리하지 못한다고 판단했을 때 (Disconnected 되는 등의 상황) 메시지를 다음 순번의 Consumer(Worker)에게 라운드 로빈한다.
@@ -111,8 +126,8 @@ ACK가 중요한 이유는 Queue는 Consumer에게 데이터를 전달하고나�
 queue생성시 durable속성을 true로 주고 만든다.
 message publish할때 MessageProperties.PERSISTENT_TEXT_PLAIN을 설정함
 1,2번 모두 만족해야 메시지가 Queue에 남아있을 때 restart해도 날라가지 않는다.<br><br>
+  <img src="/image/rabbitmq/message_duarability.png" class="post-img-large"/>
 
-<!-- 이미지 넣기 -->
 ※ 메시지의 persistent는 완변히 보장되진 않음. 메번 메시지마다 fsync 로 동기화히지 않기 때문에 짧은시간이나마 아직 Disk에 쓰여지지 않았을 경우가 있다. 좀더 강력한 방법을 보장하기 위해서는 publisher confirms를 사용
 
 </p>
@@ -149,9 +164,9 @@ channel.basicPublish( "logs", "", null, message.getBytes());
  
 RabbitMQ 연결시마다 서버에서 발급한 random Queue 이름의 사용<br>
  
-연결이 종료 되었을 때 Queue의 자동삭제<br><br>
+연결이 종료 되었을 때 Queue의 자동삭제<br>
+  <img src="/image/rabbitmq/temp_queue.png" class="post-img-large"/>
 
-<!-- 이미지 넣기 -->
 String queueName = channel.queueDeclare().getQueue();
 이런식의 amq.gen-JzTY20BRgKO-HjmUJj0wLg Random Queue가 사용된다.
 </p>
@@ -297,18 +312,19 @@ CorrelationID : 요청을 구분할 수 있는 유일값<br>
 <br>
 
 <h3>RabbitMQ Queue 와 Topic 의 차이점</h3><br>
-<h5>개념도</h5><br>
-<!-- 이미지 넣기 -->
+<h5>개념도</h5>
+  <img src="/image/rabbitmq/default.png" class="post-img-large"/>
+
 <ul>
   <li>큐를 사용한 방법<br>
     -큐를 미리 만들어두고 클라이언트가 각각 하나씩 빼가도록 만들수 있습니다.<br>
     -두개의 클라이언트는 각각 한번씩 큐를 꺼내가는것이 가능합니다.<br>
     -> A클라이언트가 한개의 요청을 가져가면 B는 이벤트가 발생하지 않습니다.
-  </li>
+  </li><br>
   <li>Topic를 사용한 방법<br>
     -해당 토픽으로 온 요청을 /topic/noti 로 두개의 큐에 각각 쌓게 됩니다.<br>
     -sub 포인트를 지정해주면 자동으로 각각의 큐가 만들어지며 구독이 가능합니다.
-</li>
+</li><br>
   <li>RPC 구성시 고려할 점<br>
     -돌아가는 서버가 없을 때 Client 처리<br>
     -요청 Timeout시 Client 처리<br>
