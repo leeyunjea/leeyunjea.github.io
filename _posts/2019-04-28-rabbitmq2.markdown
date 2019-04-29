@@ -6,8 +6,8 @@ categories:
   - RabbitMQ
 description:
 # image: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428071738_BASIC.jpg?raw=true
-image: /image/ALLOWTO_PHOTO_20190428071738_BASIC.jpg
-image-sm: /image/ALLOWTO_PHOTO_20190428071738_BASIC.jpg
+image: /image/rabbitmq/rabbit.png
+image-sm: /image/rabbitmq/rabbit.png
 
 ---
 <!-- {:.post-img.small}
