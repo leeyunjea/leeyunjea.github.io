@@ -5,7 +5,6 @@ date: 2019-04-28
 categories:
   - PWDSecurity
 description:
-# image: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428065000_STANDARD.jpg?raw=true
 image: /image/rabbitmq/security.jpg
 image-sm: /image/rabbitmq/security.jpg
 

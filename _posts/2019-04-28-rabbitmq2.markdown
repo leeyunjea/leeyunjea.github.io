@@ -5,7 +5,6 @@ date: 2019-04-28
 categories:
   - RabbitMQ
 description:
-# image: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428071738_BASIC.jpg?raw=true
 image: /image/rabbitmq/rabbit.png
 image-sm: /image/rabbitmq/rabbit.png
 
