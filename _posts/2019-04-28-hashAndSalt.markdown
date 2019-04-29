@@ -3,7 +3,7 @@ layout: post
 title: "비밀번호 암호화"
 date: 2019-04-28
 categories:
-  - 비밀번호암호화
+  - PWDSecurity
 description:
 # image: https://github.com/leeyunjea/leeyunjea.github.io/blob/master/_images/ALLOWTO_PHOTO_20190428065000_STANDARD.jpg?raw=true
 image: /image/rabbitmq/security.jpg
