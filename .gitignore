@@ -3,7 +3,7 @@
 # Edit at https://www.gitignore.io/?templates=macos,jekyll
 
 ### Jekyll ###
-_site
+_site/*
 _site/2019
 _site/실행방법
 _site/archive

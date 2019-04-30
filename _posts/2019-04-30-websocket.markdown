@@ -5,8 +5,8 @@ date: 2019-04-30
 categories:
   - Websocket
 description:
-image: /image/websocket/webSocket3.png
-image-sm: /image/websocket/webSocket3.png
+image: /image/websocket/websocket3.png
+image-sm: /image/websocket/websocket3.png
 
 ---
 <!-- {:.post-img.small}
