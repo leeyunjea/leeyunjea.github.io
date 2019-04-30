@@ -10,9 +10,10 @@
     {% for category in sortedCats %}
       <li class="card">
         {% assign cat_dir = site.category_dir | default: 'category' %}
-        <!-- <a class="card__link" href="{{ site.baseurl }}/{{ cat_dir }}/{{ category | downcase | slugify }}/"> -->
-          <a class="card__link" href="{{ site.baseurl }}/category/{{ category | downcase | slugify }}">
+        <a class="card__link" href="{{ site.baseurl }}/{{ cat_dir }}/{{ category | downcase | slugify }}/">
+          <!-- <a class="card__link" href="{{ site.baseurl }}/category/{{ category | downcase | slugify }}"> -->
           {% for post in site.categories[category] limit: 1 %}
+          <!-- <a class="card__link" href="{{ post.url | prepend: site.baseurl }}" itemprop="url"> -->
             <div class="card__img">
               {% if post.image-sm %}
                 <figure class="absolute-bg" style="background-image: url('{{ post.image-sm }}');"></figure>
