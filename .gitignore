@@ -3,7 +3,14 @@
 # Edit at https://www.gitignore.io/?templates=macos,jekyll
 
 ### Jekyll ###
-_site/
+_site/2019
+_site/실행방법
+_site/archive
+_site/assets
+_site/image
+_site/*.xml
+_site/*.txt
+_site/*.html
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
