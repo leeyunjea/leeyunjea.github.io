@@ -1,0 +1,52 @@
+---
+layout: post
+title: "Nginx"
+date: 2019-05-01
+categories:
+  - Nginx
+description:
+image: /image/nginx/nginx2.jpg
+image-sm: /image/nginx/nginx2.jpg
+
+---
+<!-- {:.post-img.small}
+![producer](/image/rabbitmq/producer.png) -->
+
+
+<h2>Nginx의 개요</h2>
+<img src="/image/nginx/nginx_logo.png" class="post-img-mid"/>
+<p>엔진엑스(Nginx)는 Igor Sysoev라는 러시아 개발자가 동시접속 처리에 특화된 웹 서버 프로그램이다. Apache보다 동작이 단순하고, 전달자 역할만 하기 때문에 동시접속 처리에 특화되어 있다.
+동시접속자(약 700명) 이상이라면 서버를 증설하거나 Nginx 환경을 권장한다고 한다. 지금은 아파치가 시장 점유율이 압도적이지만, 아마존웹서비스(AWS) 상에서는 시장 점유율 44%에 달할정도로 가볍고, 성능이 좋은 엔진이라고 한다.
+</p><br>
+
+<h3>1. Nginx(웹서버)의 역할</h3><br>
+<img src="/image/nginx/nginx_a.png" class="post-img-large"/>
+
+<h4>1-1. 정적 파일을 처리하는 HTTP 서버로서의 역할</h4><br>
+<p>웹서버의 역할은 HTML, CSS, Javascript, 이미지와 같은 정보를 웹 브라우저(Chrome, Iexplore, Opera, Firefox 등)에 전송하는 역할을 한다. (HTTP 프로토콜을 준수)</p><br>
+
+<h4>1-2. 응용프로그램 서버에 요청을 보내는 리버스 프록시로서의 역할</h4>
+<img src="/image/nginx/reverse_proxy.png" class="post-img-large"/>
+<p>두번째 역할은 <span style="color:coral">리버스 프록시(reverse proxy)</span>인데, 한마디로 말하면 클라이언트는 가짜 서버에 요청(request)하면, 프록시 서버가 배후 서버(reverse server)로부터 데이터를 가져오는 역할을 한다. 여기서 프록시 서버가 Nginx, 리버스 서버가 응용프로그램 서버를 의미한다.
+웹 응용프로그램 서버에 리버스 프록시(Nginx)를 두는 이유는 요청(request)에 대한 버퍼링이 있기 때문이다. 클라이언트가 직접 App 서버에 직접 요청하는 경우, 프로세스 1개가 응답 대기 상태가 되어야만 한다. 따라서 프록시 서버를 둠으로써 요청을 배분하는 역할을 한다.
+nginx.conf 파일에서 location 지시어를 사용하여 요청을 배분한다.</p>
+<img src="/image/nginx/nginx_b.png" class="post-img-grande"/>
+<p>Nginx는 비동기 처리 방식(Event-Drive) 방식을 채택하고 있다.
+</p>
+<ul>
+<li>동기(Synchronous) : A가 B에게 데이터를 요청했을 때, 이 요청에 따른 응답을 주어야만 A가 다시 작업 처리가 가능 (하나의 요청, 하나의 작업에 충실)</li>
+<li>비동기(Asynchronous) : A의 요청을 B가 즉시 주지 않아도, A의 유휴시간으로 또 다른 작업 처리가 가능한 방식</li>
+</ul>
+<br>
+
+<h4>Reverse Proxy</h4><br>
+<p>클라이언트가 example.com 웹 서비스에 데이타를 요청하면 Reverse Proxy는 이 요청을 받아서 내부 서버에서 데이타를 받은후에 이 데이타를 클라이언트에 전달하게 된다.<br><br>
+
+내부 서버가 직접 서비스를 제공해도 되지만 이렇게 구성하는 이유는 보안때문이다.<br>
+보통 기업의 네트워크 환경은 DMZ 라고 하는 내부 네트워크와 외부 네트워크 사이에 위치하는 구간이 존재하며 이 구간에는 메일 서버, 웹 서버, FTP 서버등 외부 서비스를 제공하는 서버가 위치하게 된다.<br>
+example.com 사는 서비스를 자바로 구현해서 WAS 를 DMZ 에 놓고 서비스해도 되지만 WAS 는 보통 DB 서버와 연결되므로 WAS 가 최전방에 있으면 WAS 가 털릴 경우 DB 서버까지 같이 털리는 심각한 문제가 발생할 수 있다.<br><br>
+이때문에 리버스 프락시 서버를 두고 실제 서비스 서버는 내부망에 위치시키고 프락시 서버만 내부에 있는 서비스 서버와 통신해서 결과를 클라이언트에게 제공하는 방식으로 서비스를 하게 된다.<br>
+특히 리눅스 환경이라면 리버스 프락시로 아파치 웹 서버를 사용한다면 SELinux 를 켜 놓으면 SELinux 의 기본 정책이 웹 서버는 톰캣의 8080, 8009 포트만 접근 할 수 있으므로 아파치 웹 서버가 해킹당해도 웹 서버 권한으로는 내부망으로 연결이 불가하다.
+</p>
+<img src="/image/nginx/reverse.png" class="post-img-grande"/>
+<br>
