@@ -1,0 +1,49 @@
+---
+layout: post
+title: "IoC 컨테이너와 빈"
+date: 2019-05-23
+categories:
+  - SPRING
+description:
+image: /image/spring/spring-core-tutorial.png
+image-sm: /image/spring/spring-framework.png
+
+---
+<!-- {:.post-img.small}
+![producer](/image/rabbitmq/producer.png) -->
+
+
+IoC 컨테이너와 Bean
+==============
+<br>
+### 스프링 IoC 컨테이너
+<br />
+- Inversion of Control : 의존 관계 주입(Dependency Injection)
+- BeanFactory(최상위 인터페이스)
+- 애플리케이션 컴포넌트의 중앙 저장소
+- 빈 설정 소스로 부터 빈 정의를 읽어들이고, 빈을 구성하고 제공
+<br>
+
+<br />
+### 빈이란
+<br />
+- IoC 컨테이너가 관리하는 객체
+- IoC 컨테이너가 싱글톤으로 관리하는 객체
+    - 싱글톤 : 하나의 객체만 사용 (성능상 유리)
+        - ex) 데이터베이스 레퍼지토리를 만드는 비용이 비싼데 싱글톤으로 만든다면 비용 절약
+    - 프로토타입 : 매번 다른 객체로 사용
+- 의존성 관리
+- 라이플 사이클 인터페이스 
+<br><br>
+### IoC 컨테이너의 빈으로 관리하는 이유
+<br />
+ - 의존성 주입을 받기 위해
+ - 싱글톤으로 관리하고 싶을 때 
+
+<br>
+### Application Context
+<br />
+ - BeanFactory를 상속받는 인터페이스
+<br /><br />
+
+
