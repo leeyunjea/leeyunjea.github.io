@@ -473,6 +473,7 @@ ul.social-buttons li a:active {
 	background-image: url('/image/feature3.jpg');
 	@media #{$medium} {
 		// background-color: $header-color;
+		background-image: url('/image/feature3.jpg');
 		min-height: 300px;
 	}
 }
