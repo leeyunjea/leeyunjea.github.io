@@ -2,6 +2,7 @@
 layout: post
 title: "IoC 컨테이너와 빈"
 date: 2019-05-23
+tags: [spring]
 categories:
   - SPRING
 description:
@@ -13,9 +14,8 @@ image-sm: /image/spring/spring-framework.png
 ![producer](/image/rabbitmq/producer.png) -->
 
 
-IoC 컨테이너와 Bean
-==============
-<br>
+
+
 ### 스프링 IoC 컨테이너
 <br />
 - Inversion of Control : 의존 관계 주입(Dependency Injection)

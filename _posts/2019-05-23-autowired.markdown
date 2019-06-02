@@ -2,6 +2,7 @@
 layout: post
 title: "@Autowire"
 date: 2019-05-23
+tags: [spring]
 categories:
   - SPRING
 description:
@@ -13,9 +14,8 @@ image-sm: /image/spring/spring-framework.png
 ![producer](/image/rabbitmq/producer.png) -->
 
 
-@Autowire
-==============
-<br>
+
+
 ### @Autowire
 <br />
 
@@ -28,54 +28,56 @@ image-sm: /image/spring/spring-framework.png
 #### 사용할 수 있는 위치
 <br>
 1. 생성자
-```java
-    @Service
-    public class BookService  { 
+{% highlight java %}
+@Service
+public class BookService  { 
 
-    BookRepository bookRepository;
+   BookRepository bookRepository;
 
-    @Autowired
-    public BookService(BookRepository bookRepository) {
-    this.bookRepository = bookRepository;
-    }
-    }
-```
+   @Autowired
+   public BookService(BookRepository bookRepository) {
+      this.bookRepository = bookRepository;
+   }
+}
+{% endhighlight %}
+
+
 2. 세터
-```java
-   @Service
-   public class BookService  { 
+{% highlight java %}
+@Service
+public class BookService  { 
 
    BookRepository bookRepository;
 
    @Autowired(required = false)
    public void setBookRepository(BookRepository bookRepository) {
-    this.bookRepository = bookRepository;
+      this.bookRepository = bookRepository;
    }
 }
-```
+{% endhighlight %}
 3. 필드
-```java
-   @Service
-   public class BookService  { 
+{% highlight java %}
+@Service
+public class BookService  { 
 
    @Autowired
    BookRepository bookRepository;
 
-   }
-```
+}
+{% endhighlight %}
 <br>
 
 #### 같은 타입의 빈이 여러개 일 때
 <br>
 1. @Primary
-```java
+{% highlight java %}
    @Repository @Primary 
    public class KeesunBookRepository implements BookRepository {
    }
-```
+{% endhighlight %}
 2. 해당 타입의 빈 모두 주입 받기
 3. @Qualifier (빈 이름으로 주입)
-```java
+{% highlight java %}
    @Service
    public class BookService  { 
 
@@ -83,7 +85,7 @@ image-sm: /image/spring/spring-framework.png
        BookRepository bookRepository;
 
    }
-```
+{% endhighlight %}
 
 <br>
 

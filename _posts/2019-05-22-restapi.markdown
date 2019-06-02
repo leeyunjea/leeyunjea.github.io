@@ -2,6 +2,7 @@
 layout: post
 title: "REST API 란"
 date: 2019-05-22
+tags: [rest]
 categories:
   - REST
 description:
@@ -13,8 +14,7 @@ image-sm: /image/rest/rest.png
 ![producer](/image/rabbitmq/producer.png) -->
 
 
-REST API 란
-==============
+
 <br />
 
 - API(Application Programming Interface)란

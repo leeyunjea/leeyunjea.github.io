@@ -2,6 +2,7 @@
 layout: post
 title: "RESTFUL"
 date: 2019-05-22
+tags: [rest]
 categories:
   - REST
 description:
@@ -13,8 +14,7 @@ image-sm: /image/rest/rest.png
 ![producer](/image/rabbitmq/producer.png) -->
 
 
-RESTFUL
-==============
+
 {:.post-img.large}
 ![restful](/image/rest/restfulapi.png)
 <br />

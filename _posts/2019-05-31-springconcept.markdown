@@ -2,19 +2,17 @@
 layout: post
 title: "Spring 기본 개념"
 date: 2019-05-31
+tags: [spring]
 categories:
   - SPRING
-description:
+description: "Spring의 IoC, DI, AOP, POJO, MVC를 알아본다."
 image: /image/spring/spring-core-tutorial.png
 image-sm: /image/spring/spring-framework.png
 
 ---
-<!-- {:.post-img.small}
-![producer](/image/rabbitmq/producer.png) -->
 
 
-Spring 기본 개념
-==============
+
 <br>
 ### IoC
 <br />

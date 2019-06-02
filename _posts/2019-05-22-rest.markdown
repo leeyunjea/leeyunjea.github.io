@@ -2,6 +2,7 @@
 layout: post
 title: "REST 란"
 date: 2019-05-22
+tags: [rest]
 categories:
   - REST
 description:
@@ -13,9 +14,8 @@ image-sm: /image/rest/rest.png
 ![producer](/image/rabbitmq/producer.png) -->
 
 
-REST 란
-==============
-<br />
+
+
 
 ### REST 정의
 <br />

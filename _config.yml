@@ -1,45 +1,100 @@
-# Site/SEO settings
-email: yunjea0312@naver.com
-permalink: /:year/:month/:day/:title/
-google_analytics: 
+title:            Yunjas's Blog
+description:      Describe your website here.
 
-title: leeyunjea's 개발 Blog
-description: 
-# url: "https://leeyunjea.github.io"
-url: 
-baseurl: 
-twitter_username: 
-default_img: "/image/study.jpg" 
+# put your disqus here
+disqus_shortname:
+reading_time:     true # if true, shows the estimated reading time for a post
+words_per_minute: 200
+logo:             image/h.png # logo visible in the topbar
+excerpt_separator: <!--more-->
+# Your site's domain goes here (eg: //mmistakes.github.io, http://mademistakes.com, etc)
+# When testing locally leave blank or use http://localhost:4000
 
-# Profile settings
-name: yunjae
-profile_img: "/image/me.jpeg"
-profile: Welcome to Yunjae's blog. This blog is described for IT study purpose.
-social: yunjea0312@naver.com
-github: "https://github.com/leeyunjea"
+# url: http://aronbordin.com/neo-hpstr-jekyll-theme
 
-# Build settings
-markdown: kramdown
-plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - octopress-autoprefixer
-compress_html:
-  clippings: all
-  comments: all
-  startings: [html, head, body]
-exclude:
-  - _screenshots
-  - .DS_Store
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE.txt
-  - README.md
+# draw your top menu here
+# each item must have a title and a url.
+#   To list post categories. use type: 'categories'
+#   To create sub categories. add a submenu item
+# See the example
+menu:
+  - title: 'Home'
+    url: '/'
+  # - title: 'Fork'
+  #   url: 'http://github.com/aron-bordin/neo-hpstr-jekyll-theme'
+  # - title: 'Install'
+  #   url: 'http://github.com/aron-bordin/neo-hpstr-jekyll-theme#installation'
+  - title: 'Tags'
+    url: '/tags'
+  - title: 'Categories'
+    url: '/categories'
+    type: 'categories'
+  # - title: 'Favorites'
+  #   url: '#'
+  #   submenu:
+  #     - title: 'Code Highlighter'
+  #       url: '/intro/code-highlighting-post/'
+  #     - title: 'Sample Post'
+  #       url: '/intro/sample-post/'
 
-# Pagination
-paginate: 5
-paginate_path: "/blog/page-:num"
+# Owner/author information
+owner:
+  name:           이윤재
+  site:           https://github.com/leeyunjea
+  avatar:         image/me.jpeg
+  bio:            "주니어 개발자 이윤재입니다. 공부한 내용을 바탕으로 기술하는 블로그 입니다."
+  email:          yunjea0312@naver.com
+  # GitHub nick for use in follow button in author block.
+  github: leeyunjea
 
-# Sass
+# Twitter account associated with the site if different from owner/author twitter account.
+# Used in Twitter cards.
+# twitter:
+
+# Social networking links used in author block underneath posts. Update and remove as you like.
+social:
+  - title: "github"
+    url: "https://github.com/leeyunjea"
+
+# Background image to be tiled on all pages
+background:
+
+# Analytics and webmaster tools stuff goes here
+google_analytics:
+google_verify:
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    America/New_York
+locale:      en_US
+future:      true
+highlighter: rouge
+markdown:    kramdown
 sass:
+  sass_dir: _sass
   style: compressed
+
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+permalink:   /:categories/:title/
+
+# Amount of post to show on home page
+paginate: 5
+
+# if true, shows the floatting share buttons
+float_share: true
+
+# Octopress
+# Default extensions
+post_ext: md
+page_ext: md
+# Found in _templates/
+post_layout: post
+page_layout: page
+# Format titles with titlecase?
+titlecase: true
+
+include: [".htaccess"]
+exclude: ["demo/*", "lib", "config.rb", "Capfile", "config", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
+gems: [jekyll-paginate]
+theme: neo-hpstr-jekyll-theme

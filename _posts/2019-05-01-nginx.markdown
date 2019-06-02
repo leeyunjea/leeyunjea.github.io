@@ -2,6 +2,7 @@
 layout: post
 title: "Nginx"
 date: 2019-05-01
+tags: [nginx]
 categories:
   - Nginx
 description:
