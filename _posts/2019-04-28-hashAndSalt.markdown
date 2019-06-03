@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "비밀번호 암호화"
+comments: true
 date: 2019-04-28
 tags: [password]
 categories:

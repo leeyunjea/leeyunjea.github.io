@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "IoC 컨테이너와 빈"
+comments: true
 date: 2019-05-23
 tags: [spring]
 categories:

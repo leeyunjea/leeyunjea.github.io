@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "GET과 POST의 차이"
+comments: true
 date: 2019-05-22
 tags: [web, get, post]
 categories:

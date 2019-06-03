@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "RabbitMQ란?"
+comments: true
 date: 2019-04-28
 tags: [rabbigmq, AMQP]
 categories:

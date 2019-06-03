@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Spring 기본 개념"
+comments: true
 date: 2019-05-31
 tags: [spring]
 categories:

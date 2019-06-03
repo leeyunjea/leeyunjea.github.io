@@ -2,7 +2,7 @@ title:            Yunjae's Blog
 description:      Describe your website here.
 
 # put your disqus here
-disqus_shortname:
+disqus_shortname: true
 reading_time:     true # if true, shows the estimated reading time for a post
 words_per_minute: 200
 logo:             image/favicon.PNG # logo visible in the topbar

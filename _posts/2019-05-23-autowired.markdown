@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "@Autowire"
+comments: true
 date: 2019-05-23
 tags: [spring]
 categories:

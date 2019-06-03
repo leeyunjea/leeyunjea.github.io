@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "RESTFUL"
+comments: true
 date: 2019-05-22
 tags: [rest]
 categories:
