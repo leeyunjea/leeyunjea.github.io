@@ -5,8 +5,6 @@ Neo-HPSTR Jekyll is a responsive and modern blog template.
 
 ![Preview](http://aron-bordin.github.io/neo-hpstr-jekyll-theme/images/neo-hpstr-jekyll-theme-preview.png)
 
-Demo: http://aronbordin.com/neo-hpstr-jekyll-theme
-
 
 ## Contents
 
