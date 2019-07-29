@@ -1,0 +1,154 @@
+---
+layout: post
+title: "JAVA8 - Lambda - stream api"
+comments: true
+date: 2019-07-29
+tags: [java8, lambda, stream]
+categories:
+  - java8
+description: "Java8 lambda stream에 대하여"
+# image: /image/spring/spring-core-tutorial.png
+# image-sm: /image/spring/spring-framework.png
+
+---
+
+
+<br>
+## 자바8 에서 람다식이 나오면서 stream 인터페이스가 등장
+<br />
+ - map() : map메서드는 입력 컬렉션을 출력 컬렉션으로 매핑하거나 변경할 때 유용하다.
+ - filter() : filter메서드는 컬렉션을 조건에 의한 선택을 할 때 유용하다. filter메서드는 boolean 결과를 리턴하는 람다표현식이 필요하다.
+ - reduce() : reduce 메서드는 엘리먼트를 비교하고 컬렉션에서 하나의 값으로 연산한다.
+ - collect() : collect 메서드는 reduce() 메서드와 동일하게 값을 하나로 모으는 다른 형태인데, collect는 여러 convenience method를 제공한다.
+<br>
+
+<br />
+## map()
+
+#### 예제코드 list의 엘리먼트 값을 모두 대문자로 변경하여 출력
+
+{% highlight java %}
+
+final List<String> names = Arrays.asList("yunjae", "yeji", "minsu", 
+				"sungmoon", "jinho", "haneul");
+        //java 7
+        System.out.println("===java 7===");
+        for(String name : names) {
+            System.out.println(name.toUpperCase());
+        }
+
+
+        //java 8 Lambda
+        System.out.println("===java 8===");
+        names.stream()
+        	.map(name -> name.toUpperCase())
+        	.forEach(name -> System.out.println(name));
+
+{% endhighlight %}
+
+
+#### 출력 결과
+
+ {:.post-img.small}
+![producer](/image/lambda/lambda-map.png)
+
+<br>
+
+## filter()
+#### 예제코드 collection메서드는 filter 표현식에 나온 값을 List로 변경한다.
+
+{% highlight java %}
+
+  //java 7
+  System.out.println("===java 7===");
+  final List<String> startsWithN1 = new ArrayList<String>();
+	for(String name : names) {
+		if(name.startsWith("s")) {
+			startsWithN1.add(name);
+		}
+	}
+		
+  System.out.println(startsWithN1);
+		
+	
+  //java 8 lambda
+  System.out.println("===java 8===");
+  final List<String> startsWithN2 = names.stream()
+		.filter(name -> name.startsWith("s"))
+		.collect(Collectors.toList());
+		
+  System.out.println(startsWithN2);
+
+{% endhighlight %}
+
+
+#### 출력 결과
+{:.post-img.small}
+![producer](/image/lambda/lambda-filter.png)
+
+<br>
+
+## reduce()
+#### 예제코드 특정 스트링값의 길이보다 크고, 리스트의 가장 긴 이름을 가진 엘리먼트 출력
+
+{% highlight java %}
+
+  //java 7
+  String Longer = "";
+  String compare = "yeon";
+  for(String name : names) {
+	  if(compare.length() <= name.length() && Longer.length() <= name.length()) {
+	  	Longer = name;
+  	}
+  }
+		
+  System.out.println("java 7 = " + Longer);
+		
+  //java 8 Lambda
+  String Longer2 = names.stream().reduce(compare, (name1, name2) ->
+  		name1.length() >= name2.length() ? name1 : name2);
+		
+  System.out.println("java 8 = " + Longer2);
+
+{% endhighlight %}
+
+#### 출력 결과
+
+{:.post-img.small}
+![producer](/image/lambda/lambda-reduce.png)
+
+<br>
+
+## collect()
+#### 예제코드 : 아래 예제는 리스트의 엘리먼트를 콤마로 구분하여 출력하는데, 기존 for문으로는 마지막 엘리먼트에 콤마를 안붙이는게 쉽지는 않다. 하지만 collect 메서드를 사용하면 간단하게 만들 수 있다.
+
+{% highlight java %}
+
+  //java 7
+  System.out.println("===java 7===");
+  for(int i=0; i<names.size()-1; i++) {
+    System.out.print(names.get(i).toUpperCase()+ ", ");
+  }
+		
+  if(names.size() > 0) {
+    System.out.println(names.get(names.size()-1).toUpperCase());
+  }
+		
+	//java 8 Lambda
+  System.out.println("===java 8===");
+  System.out.println(names.stream()
+  	.map(String::toUpperCase)
+	.collect(Collectors.joining(", ")));
+
+{% endhighlight %}
+
+
+#### 출력결과
+
+{:.post-img.small}
+![producer](/image/lambda/lambda-collect.png)
+
+
+<br /><br />
+
+
